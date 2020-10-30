@@ -7,7 +7,29 @@ let products = [
 ]
 console.log(products);
 
-const liProducts = products.map(product => {
+if(!localStorage.getItem("Products")){
+	localStorage.setItem("Products", JSON.stringify(products));
+}
+
+const formulario = document.querySelector("#form-product");
+
+if(formulario){
+	formulario.addEventListener('submit', function(e){
+		e.preventDefault();
+		products.push({
+			id: products.length+1,
+			name: e.target.name.value,
+			description: e.target.description.value,
+			price: e.target.price.value,
+			selected: false
+		});
+		console.log(products);
+		localStorage.setItem("Products", JSON.stringify(products));
+		alert('A creado un nuevo producto');
+	});
+}
+
+const liProducts = JSON.parse(localStorage.getItem("Products")).map(product => {
 	return `<li class="item-product p-1">
 			<header class="header-product"><h4>${product.name}</h4></header>
 			<p>${product.description}</p>
@@ -21,6 +43,6 @@ const liProducts = products.map(product => {
 		</li>`;
 }).join('\n');
 
-document.querySelector('#products-list').innerHTML = liProducts;
+const containerProducts = document.querySelector('#products-list');
+if(containerProducts) containerProducts.innerHTML = liProducts;
 
-console.log(liProducts);
