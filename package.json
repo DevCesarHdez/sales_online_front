@@ -1,0 +1,26 @@
+{
+  "name": "sales_online_front",
+  "version": "1.0.0",
+  "description": "Front de pagina de venta perspectiva genero",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevCesarHdez/sales_online_front.git"
+  },
+  "keywords": [
+    "perspectiva",
+    "genero"
+  ],
+  "author": "DevCesarHdez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevCesarHdez/sales_online_front/issues"
+  },
+  "homepage": "https://github.com/DevCesarHdez/sales_online_front#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
