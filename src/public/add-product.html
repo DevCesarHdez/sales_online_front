@@ -20,8 +20,27 @@
 		</header>
 		<main class="pt-2">
 			<div class="container mx-auto">
-				<ul id="products-list">
-				</ul>
+				<form action="" method="psot">
+					<div class="group-form">
+						<label for="name">Nombre:</label>
+						<input type="text" id="name" name="name" class="input-text">
+					</div>
+					<div class="group-form">
+						<label for="description">Descripción</label>
+						<input type="text" id="description" name="description" class="input-text">
+					</div>
+					<div class="group-form">
+						<label for="price">Precio</label>
+						<input type="number" id="price" name="price" class="input-text">
+					</div>
+					<div class="group-form">
+						<label for="image">Imagen</label>
+						<input type="url" id="image" name="image" class="input-text">
+					</div>
+					<div class="group-form">
+						<button type="submit" class="btn btn-success mx-auto">Agregar Produco</button>
+					</div>
+				</form>
 			</div>
 		</main>
 		<footer class="mt-4 mb-4">
@@ -30,7 +49,7 @@
 					<p>Mapa del sitio</p>
 					<hr/>
 					<ul>
-						<li><a href="add-product.html">Agregar nuevo producto</a></li>
+						<li><a href="#">Agregar nuevo producto</a></li>
 						<li><a href="#">Carrito de compras</a></li>
 						<li><a href="#">Catalogo</a></li>
 						<li><a href="#">Inicio</a></li>

@@ -91,3 +91,15 @@ li{
 	display: flex;
 	justify-content: space-between;
 }
+
+/* ************************ *
+ * Estilos form add product *
+ * ************************ */
+.group-form{
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+}
+.group-form label{
+	display: inline-block;
+	width: 5.6rem;
+}
