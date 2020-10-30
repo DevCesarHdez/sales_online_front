@@ -3,3 +3,46 @@
 	margin: 0;
 	padding: 0;
 }
+
+/* ***************** *
+ * Estilos Generales *
+ * ***************** */
+
+a{
+	text-decoration: none;
+	color: black;
+}
+.container{	
+	position: relative;
+	width: 90%;
+}
+.mx-auto{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ************** *
+ * Estilos Header *
+ * ************** */
+
+#header-index{
+	border-bottom: 1px solid #f60;
+	height: 64px;
+	width: 100vw;
+}
+.nav-brand{
+	line-height: 64px;
+}
+.nav-header{
+	line-height: 64px;
+	margin-left: auto;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	width: fit-content;
+}
+.li-header{
+	display: inline-block;
+}
