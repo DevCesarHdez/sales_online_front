@@ -23,6 +23,7 @@ const formulario = document.querySelector("#form-product");
 if(formulario){
 	formulario.addEventListener('submit', function(e){
 		e.preventDefault();
+		products = JSON.parse(localStorage.getItem("Products"));
 		products.push({
 			id: products.length+1,
 			name: e.target.name.value,
@@ -49,7 +50,7 @@ const liSelectedProducts = JSON.parse(localStorage.getItem("SelectedProducts")).
 }).join('\n');
 
 const containerSelectedProducts = document.querySelector("#selected-products-list");
-if(containerSelectedProducts) containerSelectedProducts.innerHTML = liSelectedProducts+`<div class="total">${new Intl.NumberFormat('en-IN').format(total)}</div>`;
+if(containerSelectedProducts) containerSelectedProducts.innerHTML = liSelectedProducts+`<div class="total">Total: $ ${new Intl.NumberFormat('en-IN').format(total)}</div>`;
 
 const liProducts = JSON.parse(localStorage.getItem("Products")).map(product => {
 	return `<li class="item-product p-1">
@@ -89,6 +90,11 @@ if(checkboxes){
 						cantidad: cantidad
 					});
 					localStorage.setItem("SelectedProducts", JSON.stringify(selectedProducts));
+					products = JSON.parse(localStorage.getItem("Products")).filter(product => {
+						if(product.id == selectedProduct.id) product.selected = true;
+						return product;
+					});
+					localStorage.setItem("Products", JSON.stringify(products));
 				}else{
 					item.checked = false;
 				}
@@ -98,6 +104,10 @@ if(checkboxes){
 						return item.id != id;
 					});
 					localStorage.setItem("SelectedProducts", JSON.stringify(selectedProducts));
+					products = JSON.parse(localStorage.getItem("Products")).filter(product => {
+						if(product.id == selectedProduct.id) product.selected = false;
+						return product;
+					});
 				}else{
 					item.checked = true;
 				}
