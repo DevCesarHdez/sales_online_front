@@ -13,11 +13,17 @@ if(!localStorage.getItem("Products")){
 	localStorage.setItem("Products", JSON.stringify(products));
 }
 
+
+if(!localStorage.getItem("SelectedProducts")){
+	localStorage.setItem("SelectedProducts", JSON.stringify(selectedProducts));
+}
+
 const formulario = document.querySelector("#form-product");
 
 if(formulario){
 	formulario.addEventListener('submit', function(e){
 		e.preventDefault();
+		products = JSON.parse(localStorage.getItem("Products"));
 		products.push({
 			id: products.length+1,
 			name: e.target.name.value,
@@ -30,6 +36,21 @@ if(formulario){
 		alert('A creado un nuevo producto');
 	});
 }
+
+let total = 0;
+const liSelectedProducts = JSON.parse(localStorage.getItem("SelectedProducts")).map(product => {
+	total += product.cantidad*product.price;
+	return `<li class="item-product p-1">
+			<header class="header-product"><h4>${product.name}</h4></header>
+			<footer class="footer-product">
+				<p>Cantidad: ${product.cantidad} Precio unitario ${new Intl.NumberFormat('en-IN').format(product.price)}</p>
+				<p>Subtotal ${new Intl.NumberFormat('en-IN').format(product.cantidad*product.price)}</p>
+			</footer>
+		</li>`;
+}).join('\n');
+
+const containerSelectedProducts = document.querySelector("#selected-products-list");
+if(containerSelectedProducts) containerSelectedProducts.innerHTML = liSelectedProducts+`<div class="total">Total: $ ${new Intl.NumberFormat('en-IN').format(total)}</div>`;
 
 const liProducts = JSON.parse(localStorage.getItem("Products")).map(product => {
 	return `<li class="item-product p-1">
@@ -60,6 +81,7 @@ if(checkboxes){
 				const cantidad = prompt("Cuantos productos desea agregar", 1); 
 				if(cantidad > 0){
 					//console.log(cantidad);
+					selectedProducts = JSON.parse(localStorage.getItem("SelectedProducts"));
 					selectedProducts.push({
 						id: selectedProduct.id,
 						name: selectedProduct.name,
@@ -68,6 +90,11 @@ if(checkboxes){
 						cantidad: cantidad
 					});
 					localStorage.setItem("SelectedProducts", JSON.stringify(selectedProducts));
+					products = JSON.parse(localStorage.getItem("Products")).filter(product => {
+						if(product.id == selectedProduct.id) product.selected = true;
+						return product;
+					});
+					localStorage.setItem("Products", JSON.stringify(products));
 				}else{
 					item.checked = false;
 				}
@@ -77,6 +104,10 @@ if(checkboxes){
 						return item.id != id;
 					});
 					localStorage.setItem("SelectedProducts", JSON.stringify(selectedProducts));
+					products = JSON.parse(localStorage.getItem("Products")).filter(product => {
+						if(product.id == selectedProduct.id) product.selected = false;
+						return product;
+					});
 				}else{
 					item.checked = true;
 				}
