@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop acer",
+    "description": "Procesador Intel core I3, ram 4gb, alamacenamiento 500gb, pantalla 14'",
+    "price": 3500
+  },
+  {
+    "id": 2,
+    "name": "Memoria USB 8GB",
+    "description": "Momoria USB, alamacenamiento de 8GB, marca Kingston",
+    "price": 80
+  },
+  {
+    "id": 3,
+    "name": "Memoria USB 16GB",
+    "description": "Momoria USB, alamacenamiento de 16GB, marca Kingston",
+    "price": 110
+  },
+  {
+    "id": 4,
+    "name": "Momoria USB 32GB",
+    "description": "Memoria USB, alamacenamiento de 32GB, marca Kingston",
+    "price": 150
+  }
+]
